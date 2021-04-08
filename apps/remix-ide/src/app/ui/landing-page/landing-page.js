@@ -119,7 +119,7 @@ const profile = {
 }
 
 export class LandingPage extends ViewPlugin {
-  constructor (appManager, verticalIcons, fileManager, filePanel) {
+  constructor(appManager, verticalIcons, fileManager, filePanel) {
     super(profile)
     this.profile = profile
     this.fileManager = fileManager
@@ -181,12 +181,12 @@ export class LandingPage extends ViewPlugin {
     })
   }
 
-  adjustMediaPanel () {
+  adjustMediaPanel() {
     this.twitterPanel.style.maxHeight = Math.max(window.innerHeight - 150, 200) + 'px'
     this.mediumPanel.style.maxHeight = Math.max(window.innerHeight - 150, 200) + 'px'
   }
 
-  hideMediaPanel (e) {
+  hideMediaPanel(e) {
     const mediaPanelsTitle = document.getElementById('remixIDEMediaPanelsTitle')
     const mediaPanels = document.getElementById('remixIDEMediaPanels')
     if (!mediaPanelsTitle || !mediaPanels) return
@@ -198,7 +198,7 @@ export class LandingPage extends ViewPlugin {
     }
   }
 
-  onThemeChanged (themeQuality) {
+  onThemeChanged(themeQuality) {
     const twitterFrame = yo`
       <div class="px-2 ${css.media}">
         <a class="twitter-timeline"
@@ -224,7 +224,7 @@ export class LandingPage extends ViewPlugin {
     if (this.websiteIcon) this.websiteIcon.style.filter = `invert(${invertNum})`
   }
 
-  showMediaPanel (e) {
+  showMediaPanel(e) {
     if (e.target.id === 'remixIDEHomeTwitterbtn') {
       this.mediumPanel.classList.remove('d-block')
       this.mediumPanel.classList.add('d-none')
@@ -238,7 +238,7 @@ export class LandingPage extends ViewPlugin {
     }
   }
 
-  render () {
+  render() {
     const load = (service, item, examples, info) => {
       const compilerImport = new CompilerImport()
       const fileProviders = globalRegistry.get('fileproviders').api
@@ -477,36 +477,32 @@ export class LandingPage extends ViewPlugin {
                   <audio id="remiAudio" muted=false src="assets/audio/remiGuitar-single-power-chord-A-minor.wav"></audio>
                   <div class="w-80 pl-5 ml-5">
                     <h6 class="mb-0">Quicklinks</h6>
-                    <span class="d-flex">
-                      <li></li>
+                    <li>
                       <u class="${css.text} px-1" onclick=${() => migrateWorkspace()}>Migrate File system</u>
-                      <span>to workspace</span>
-                    </span>
+                      to workspace
+                    </li>
                     <p class="mb-0">2-step solution:</p>
-                    <span class="d-flex">
-                      <li>manually</li>
+                    <li>
+                      manually
                       <u class="${css.text} px-1" onclick=${() => downloadFiles()}>Download all Files</u>
-                      <span>as a backupzip</span>
-                    </span>
-                    <span class="d-flex">
-                      <li>use</li>
+                      as a backupzip
+                    </li>
+                    <li>
+                      use
                       <u class="${css.text} px-1" onclick=${() => startRestoreBackupZip()}>Restore Backup Zip</u>
-                      <span>to current workspace</span>
-                    </span>
+                      to current workspace
+                    </li>
                     <br>
                     <h6 class="mb-0">Help</h6>
-                    <span class="d-flex">
-                      <li></li>
-                        <a class="${css.text} mx-1" target="__blank" href="https://gitter.im/ethereum/remix">Gitter channel</a>
-                    </span>
-                    <span class="d-flex">
-                      <li></li>
-                        <a class="${css.text} mx-1" target="__blank" href="https://github.com/ethereum/remix-project/issues">report on Github</a>
-                    </span>
-                    <span class="d-flex">
-                    <li></li>
-                      <a class="${css.text} mx-1" target="__blank" href="https://medium.org">Blog post</a>
-                  </span>
+                    <li>
+                      <a class="${css.text} mx-1" target="__blank" href="https://gitter.im/ethereum/remix">Gitter channel</a>
+                    </li>
+                    <li>
+                      <a class="${css.text} mx-1" target="__blank" href="https://github.com/ethereum/remix-project/issues">report on Github</a>
+                    </li>
+                    <li>
+                      <a class="${css.text} mx-1" target="__blank" href=" https://medium.com/remix-ide/migrating-files-to-workspaces-8e34737c751c">Blog post</a>
+                    </li>  
                   </div>
                 </div>
               </div>
@@ -534,12 +530,11 @@ export class LandingPage extends ViewPlugin {
                         <i class="mr-1 far fa-file-alt"></i>
                         <label class="ml-1 ${css.labelIt} ${css.bigLabelSize} ${css.text}">
                           Open Files
-                          <input title="open file" type="file" onchange="${
-                            (event) => {
-                              event.stopPropagation()
-                              uploadFile(event.target)
-                            }
-                          }" multiple />
+                          <input title="open file" type="file" onchange="${(event) => {
+        event.stopPropagation()
+        uploadFile(event.target)
+      }
+      }" multiple />
                         </label>
                       </p>
                       <p class="mb-1">
